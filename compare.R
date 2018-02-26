@@ -39,7 +39,7 @@ compare <- function(baseline, new, pkgsToChk) {
       names(graph2) <- 'pkg'
       
       print(sprintf('Missing the following packages from %s in the graph for %s', new, p))
-      print(graph2$pkg[!(graph1$pkg %in% graph2$pkg)])
+      print(graph2$pkg[!(graph2$pkg %in% graph1$pkg)])
       
     }
     
