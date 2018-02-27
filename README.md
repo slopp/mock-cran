@@ -50,3 +50,47 @@ The function runs 3 tests:
    Prints any packages that are missing in the graph generated from the `new` repo.
 3. Checks to see if the packages in `pkgsToChk` can be installed from the `new` repo.
 
+
+For example, here is a comparison of CRAN and demo.rstudiopm.com:
+
+
+```
+-> Rscript -e 'source("compare.R"); compare("https://cran.rstudio.com","http://demo.rstudiopm.com/cran/latest", c("tidyverse", "plumber", "shiny"))'
+[1] "repo2 different from repo1. The following repo2 packages are different (based on available packages):"
+# A tibble: 3,921 x 6
+     Package   Version
+       <chr>     <chr>
+ 1  ABCoptim    0.15.0
+ 2       ACD     1.5.3
+ 3      ACDm     1.0.4
+ 4      ACEt     1.8.0
+ 5      ACNE     0.8.1
+ 6 ACSNMineR 0.16.8.25
+ 7      ADMM     0.2.1
+ 8   ADMMnet       0.1
+ 9  ADPclust       0.7
+10       AER     1.2-5
+# ... with 3,911 more rows, and 4 more variables: Imports <chr>,
+#   Suggests <chr>, Depends <chr>, LinkingTo <chr>
+[1] "http://demo.rstudiopm.com/cran/latest dependency graph for tidyverse has the following packages that should not be there:"
+[1] "rcom"
+[1] "http://demo.rstudiopm.com/cran/latest dependency graph for tidyverse is missing the following packages compared to the baseline: "
+[1] "plogr"
+[1] "http://demo.rstudiopm.com/cran/latest dependency graph for plumber has the following packages that should not be there:"
+[1] "rcom"
+[1] "http://demo.rstudiopm.com/cran/latest dependency graph for plumber is missing the following packages compared to the baseline: "
+[1] "plogr"
+[1] "http://demo.rstudiopm.com/cran/latest dependency graph for shiny has the following packages that should not be there:"
+[1] "rcom"
+[1] "http://demo.rstudiopm.com/cran/latest dependency graph for shiny is missing the following packages compared to the baseline: "
+[1] "plogr"
+[1] "Attempting to install packages!"
+[1] "Installing tidyverse"
+also installing the dependencies ‘utf8’, ‘pillar’, ‘tibble’, ‘dbplyr’, ‘lubridate’
+
+[1] "Installing plumber"
+[1] "Installing shiny"
+
+Documents/Sandbox/mock-data  master ✗                                                             1m ⚑ ◒
+->
+```
